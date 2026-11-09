@@ -141,8 +141,14 @@
   .toast { transition: opacity .4s ease, transform .4s cubic-bezier(.22,1,.36,1); }
   .toast.is-hidden { opacity: 0; transform: translateY(14px); pointer-events: none; }
 
-  #mobileMenu { transition: opacity .35s ease, transform .35s ease; }
-  #mobileMenu.is-hidden { opacity: 0; transform: translateY(-10px); pointer-events: none; }
+  #mobileMenu { visibility: visible; transition: opacity .35s ease, transform .35s ease, visibility 0s linear 0s; }
+  #mobileMenu.is-hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .35s ease, transform .35s ease, visibility 0s linear .35s;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -186,7 +192,7 @@
     </div>
   </div>
 
-  <div id="mobileMenu" class="is-hidden border-t border-gold/25 bg-ivory px-6 pb-8 pt-4 backdrop-blur md:hidden">
+  <div id="mobileMenu" class="is-hidden absolute inset-x-0 top-full border-t border-gold/25 bg-ivory px-6 pb-8 pt-4 shadow-[0_35px_60px_-45px_rgba(36,28,23,0.6)] md:hidden">
     <nav class="flex flex-col divide-y divide-gold/20" aria-label="Mobile">
       <a href="#collections" class="py-4 text-[11px] uppercase tracking-[0.3em] text-ink/[0.85]">Collections</a>
       <a href="#centerpieces" class="py-4 text-[11px] uppercase tracking-[0.3em] text-ink/[0.85]">Centrepieces</a>
