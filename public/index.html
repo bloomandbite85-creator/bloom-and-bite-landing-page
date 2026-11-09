@@ -39,8 +39,8 @@
 </script>
 
 <style>
-  :root { color-scheme: light; }
-  html { scroll-padding-top: 5.5rem; }
+  :root { color-scheme: light; --header-h: 3.25rem; }
+  html { scroll-padding-top: calc(var(--header-h) + 1.5rem); }
   body {
     background-color: #FDFBF7;
     color: #2E2621;
@@ -120,24 +120,17 @@
   .reveal { opacity: 0; transform: translateY(26px); transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
   .reveal.is-in { opacity: 1; transform: none; }
 
-  header.site-header { transition: background-color .45s ease, box-shadow .45s ease, border-color .45s ease; }
-  .header-inner {
-    transition: padding-top .45s cubic-bezier(.22,1,.36,1), padding-bottom .45s cubic-bezier(.22,1,.36,1);
+  header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: box-shadow .45s ease, border-color .45s ease;
   }
-  .brand-name { transition: font-size .45s cubic-bezier(.22,1,.36,1); }
   header.site-header.is-scrolled {
-    background-color: rgba(253,251,247,.74);
-    backdrop-filter: blur(18px) saturate(150%);
-    -webkit-backdrop-filter: blur(18px) saturate(150%);
-    border-bottom-color: rgba(197,168,128,.3);
-    box-shadow: 0 18px 40px -34px rgba(36,28,23,.45);
+    border-bottom-color: rgba(197,168,128,.4);
+    box-shadow: 0 14px 34px -30px rgba(36,28,23,.55);
   }
-  header.site-header.is-scrolled .header-inner { padding-top: .55rem; padding-bottom: .55rem; }
-  header.site-header.is-scrolled .brand-name { font-size: 1.3rem; }
-  @media (min-width: 768px) {
-    header.site-header.is-scrolled .header-inner { padding-top: .65rem; padding-bottom: .65rem; }
-    header.site-header.is-scrolled .brand-name { font-size: 1.45rem; }
-  }
+  main { padding-top: var(--header-h); }
 
   .grain::before {
     content: '';
@@ -171,14 +164,14 @@
 <body class="font-sans antialiased">
 
 <!-- ══════════════════ NAVIGATION ══════════════════ -->
-<header id="siteHeader" class="site-header fixed inset-x-0 top-0 z-50 border-b border-transparent">
-  <div class="header-inner mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 md:py-5">
-    <a href="#top" class="group flex items-baseline gap-3" aria-label="Bloom and Bite Patisserie Studio — home">
-      <span class="brand-name font-serif text-2xl tracking-[0.02em] text-ink md:text-[26px]">Bloom <span class="text-gold-deep">&amp;</span> Bite</span>
-      <span class="hidden font-sans text-[9px] uppercase tracking-[0.34em] text-muted sm:block">Patisserie Studio</span>
+<header id="siteHeader" class="site-header sticky top-0 z-50 border-b border-gold/20 bg-white/80 backdrop-blur-md">
+  <div class="header-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2 md:px-10">
+    <a href="#top" class="group flex items-baseline gap-2.5" aria-label="Bloom and Bite Patisserie Studio — home">
+      <span class="brand-name font-serif text-lg tracking-[0.02em] text-ink md:text-xl">Bloom <span class="text-gold-deep">&amp;</span> Bite</span>
+      <span class="hidden font-sans text-[8px] uppercase tracking-[0.3em] text-muted sm:block">Patisserie Studio</span>
     </a>
 
-    <nav class="hidden items-center gap-9 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Primary">
       <a href="#collections" class="link-underline text-[10px] uppercase tracking-[0.28em] text-ink/80 transition-colors hover:text-ink">Collections</a>
       <a href="#centerpieces" class="link-underline text-[10px] uppercase tracking-[0.28em] text-ink/80 transition-colors hover:text-ink">Centrepieces</a>
       <a href="#order" class="link-underline text-[10px] uppercase tracking-[0.28em] text-ink/80 transition-colors hover:text-ink">Enquire</a>
@@ -186,14 +179,14 @@
 
     <div class="flex items-center gap-3">
       <a href="https://wa.me" target="_blank" rel="noopener"
-         class="btn-gold hidden items-center gap-2 border border-gold/70 px-5 py-2.5 text-[10px] uppercase tracking-[0.26em] text-ink sm:inline-flex">
-        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.53.08-1.2.12-1.94-.12-1.19-.38-3.03-1.28-4.53-3.02-1.27-1.48-1.62-2.6-1.66-3.17-.04-.57.3-1.18.6-1.49.24-.25.53-.31.7-.31.17 0 .34 0 .49.01.16.01.37-.06.57.44.2.48.68 1.65.74 1.77.06.12.1.26.02.42-.08.16-.16.26-.32.44-.16.18-.25.26-.36.4-.11.14-.24.3-.1.55.14.25.62 1.02 1.33 1.65.91.81 1.67 1.06 1.91 1.18.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.39.66 1.63.78.24.12.4.18.46.28.06.1.06.58-.18 1.26Z"/></svg>
+         class="btn-gold hidden items-center gap-2 border border-gold/70 px-3.5 py-1.5 text-[9px] uppercase tracking-[0.24em] text-ink sm:inline-flex">
+        <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.53.08-1.2.12-1.94-.12-1.19-.38-3.03-1.28-4.53-3.02-1.27-1.48-1.62-2.6-1.66-3.17-.04-.57.3-1.18.6-1.49.24-.25.53-.31.7-.31.17 0 .34 0 .49.01.16.01.37-.06.57.44.2.48.68 1.65.74 1.77.06.12.1.26.02.42-.08.16-.16.26-.32.44-.16.18-.25.26-.36.4-.11.14-.24.3-.1.55.14.25.62 1.02 1.33 1.65.91.81 1.67 1.06 1.91 1.18.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.39.66 1.63.78.24.12.4.18.46.28.06.1.06.58-.18 1.26Z"/></svg>
         Order
       </a>
 
       <button id="menuToggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"
-              class="flex h-10 w-10 items-center justify-center border border-gold/50 text-ink transition-colors hover:border-gold md:hidden">
-        <span class="relative block h-3 w-5">
+              class="flex h-8 w-8 items-center justify-center border border-gold/50 text-ink transition-colors hover:border-gold md:hidden">
+        <span class="relative block h-2.5 w-4">
           <span class="absolute left-0 top-0 h-px w-full bg-current"></span>
           <span class="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-current"></span>
           <span class="absolute bottom-0 left-0 h-px w-full bg-current"></span>
@@ -215,7 +208,7 @@
 <main id="top">
 
   <!-- ══════════════════ HERO ══════════════════ -->
-  <section class="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-ivory px-6 pb-20 pt-32 md:px-10 md:pb-24 md:pt-36">
+  <section class="relative flex min-h-[calc(100svh-6.5rem)] items-center justify-center overflow-hidden bg-ivory px-6 pb-14 pt-16 md:px-10 md:pb-20 md:pt-20">
     <div class="pointer-events-none absolute inset-0">
       <div class="absolute inset-0 bg-[radial-gradient(75%_60%_at_50%_0%,rgba(197,168,128,0.20)_0%,rgba(253,251,247,0)_62%)]"></div>
       <div class="absolute left-1/2 top-0 h-full w-px bg-gradient-to-b from-gold/30 via-gold/10 to-transparent"></div>
