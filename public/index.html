@@ -40,7 +40,7 @@
 
 <style>
   :root { color-scheme: light; }
-  html { scroll-padding-top: 6.5rem; }
+  html { scroll-padding-top: 5.5rem; }
   body {
     background-color: #FDFBF7;
     color: #2E2621;
@@ -121,12 +121,22 @@
   .reveal.is-in { opacity: 1; transform: none; }
 
   header.site-header { transition: background-color .45s ease, box-shadow .45s ease, border-color .45s ease; }
+  .header-inner {
+    transition: padding-top .45s cubic-bezier(.22,1,.36,1), padding-bottom .45s cubic-bezier(.22,1,.36,1);
+  }
+  .brand-name { transition: font-size .45s cubic-bezier(.22,1,.36,1); }
   header.site-header.is-scrolled {
-    background-color: rgba(253,251,247,.9);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom-color: rgba(197,168,128,.35);
-    box-shadow: 0 10px 30px -24px rgba(36,28,23,.5);
+    background-color: rgba(253,251,247,.74);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-bottom-color: rgba(197,168,128,.3);
+    box-shadow: 0 18px 40px -34px rgba(36,28,23,.45);
+  }
+  header.site-header.is-scrolled .header-inner { padding-top: .55rem; padding-bottom: .55rem; }
+  header.site-header.is-scrolled .brand-name { font-size: 1.3rem; }
+  @media (min-width: 768px) {
+    header.site-header.is-scrolled .header-inner { padding-top: .65rem; padding-bottom: .65rem; }
+    header.site-header.is-scrolled .brand-name { font-size: 1.45rem; }
   }
 
   .grain::before {
@@ -162,9 +172,9 @@
 
 <!-- ══════════════════ NAVIGATION ══════════════════ -->
 <header id="siteHeader" class="site-header fixed inset-x-0 top-0 z-50 border-b border-transparent">
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 md:py-5">
+  <div class="header-inner mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 md:py-5">
     <a href="#top" class="group flex items-baseline gap-3" aria-label="Bloom and Bite Patisserie Studio — home">
-      <span class="font-serif text-2xl tracking-[0.02em] text-ink md:text-[26px]">Bloom <span class="text-gold-deep">&amp;</span> Bite</span>
+      <span class="brand-name font-serif text-2xl tracking-[0.02em] text-ink md:text-[26px]">Bloom <span class="text-gold-deep">&amp;</span> Bite</span>
       <span class="hidden font-sans text-[9px] uppercase tracking-[0.34em] text-muted sm:block">Patisserie Studio</span>
     </a>
 
