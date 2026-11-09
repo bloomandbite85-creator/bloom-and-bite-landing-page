@@ -166,7 +166,7 @@
 <!-- ══════════════════ ANNOUNCEMENT ══════════════════ -->
 <div class="relative flex items-center justify-center border-b border-gold/25 bg-espresso px-4 py-2.5">
   <p class="text-center font-sans text-[8.5px] uppercase tracking-[0.16em] text-gold-light sm:text-[9.5px] sm:tracking-[0.24em]">
-    <span class="mr-1 text-gold" aria-hidden="true">✨</span> Artisanal Patisserie Studio <span class="mx-1 text-gold/70">&mdash;</span> Fresh Deliveries Every Friday &amp; Saturday
+    <span class="mr-1 text-gold" aria-hidden="true">✨</span> Artisanal Patisserie Studio <span class="mx-1 text-gold/70">&mdash;</span> Fresh Deliveries Every Friday, Saturday &amp; Sunday
   </p>
 </div>
 
@@ -809,7 +809,7 @@
                 <div id="dateSchedule" class="mt-3 flex items-start gap-2.5 border border-gold/30 bg-gold/[0.07] px-3 py-2.5">
                   <span class="mt-px text-[12px] leading-none" aria-hidden="true">⚠️</span>
                   <p class="text-[10px] leading-[1.7] tracking-[0.05em] text-gold-deep">
-                    <span class="font-semibold">Note:</span> Deliveries and pickups are available on Fridays and Saturdays only.
+                    <span class="font-semibold">Note:</span> Deliveries and pickups are available on Fridays, Saturdays, and Sundays only.
                   </p>
                 </div>
                 <p id="dateError" class="mt-2 hidden text-[11px] tracking-wide text-[#A24B3B]">Please choose a future date.</p>
@@ -1007,14 +1007,14 @@
     var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
     if (isNaN(d.getTime())) return false;
     var day = d.getDay();
-    return day === 5 || day === 6;
+    return day === 5 || day === 6 || day === 0;
   }
 
   dateInput.addEventListener('change', function () {
     if (!dateInput.value) return;
     if (dateInput.value >= iso && !isDeliveryDay(dateInput.value)) {
       document.getElementById('dateError').textContent =
-        'We deliver on Fridays and Saturdays only — please choose one of those days.';
+        'We deliver on Fridays, Saturdays, and Sundays only — please choose one of those days.';
       setError(dateInput, 'dateError', true);
       dateInput.setAttribute('aria-invalid', 'true');
     } else {
@@ -1041,7 +1041,7 @@
     if (!date || date < iso) {
       dateErrorMessage.textContent = 'Please choose a future date.';
     } else {
-      dateErrorMessage.textContent = 'Deliveries and pickups are available on Fridays and Saturdays only — please choose a Friday or Saturday.';
+      dateErrorMessage.textContent = 'Deliveries and pickups are available on Fridays, Saturdays, and Sundays only — please choose a Friday, Saturday, or Sunday.';
     }
 
     setError(nameField, 'nameError', nameBad);
