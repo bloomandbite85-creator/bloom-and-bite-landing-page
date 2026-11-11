@@ -142,6 +142,13 @@
   .toast { transition: opacity .4s ease, transform .4s cubic-bezier(.22,1,.36,1); }
   .toast.is-hidden { opacity: 0; transform: translateY(14px); pointer-events: none; }
 
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .reel-dot { height: 2px; width: 16px; background: rgba(197,168,128,.35); transition: width .35s ease, background .35s ease; }
+  .reel-dot.is-active { width: 30px; background: #8A6B43; }
+  .reel-card .reel-img { transition: transform 1.2s cubic-bezier(.22,1,.36,1); }
+  .reel-card:hover .reel-img { transform: scale(1.04); }
+
   #mobileMenu { visibility: visible; transition: opacity .35s ease, transform .35s ease, visibility 0s linear 0s; }
   #mobileMenu.is-hidden {
     opacity: 0;
@@ -277,57 +284,79 @@
     </div>
   </section>
 
-  <!-- ══════════════════ TRUST ══════════════════ -->
-  <section id="craft" class="relative bg-ivory px-6 pb-8 pt-20 md:px-10 md:pb-10 md:pt-28">
-    <div class="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2 md:gap-16">
-
-      <figure class="reveal relative">
-        <div class="pointer-events-none absolute -left-4 -top-4 h-full w-full border border-gold/25"></div>
-        <div class="relative overflow-hidden border border-gold/30 bg-paper/60 p-2">
-          <div class="aspect-[4/5] overflow-hidden bg-cream">
-            <img src="https://i.postimg.cc/W3Tg0mhC/IMG-8555.jpg"
-                 alt="Hand-finished floral buttercream cupcakes from Bloom and Bite"
-                 loading="lazy" width="900" height="1125"
-                 class="card-img h-full w-full object-cover" />
-          </div>
-        </div>
-        <figcaption class="mt-4 flex items-center gap-3 font-sans text-[8.5px] uppercase tracking-[0.26em] text-muted">
-          <span class="h-px w-8 bg-gold/70"></span>
-          Hand-finished, one box at a time
-        </figcaption>
-      </figure>
-
-      <div class="reveal">
-        <p class="eyebrow flex items-center gap-4 text-gold-deep">
+  <!-- ══════════════════ BRAND STORY / REELS ══════════════════ -->
+  <section id="craft" class="relative overflow-hidden bg-ivory px-6 pb-16 pt-20 md:px-10 md:pb-20 md:pt-28">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow flex items-center justify-center gap-4 text-gold-deep">
           <span class="h-px w-8 bg-gold/70"></span>
           The Studio
+          <span class="h-px w-8 bg-gold/70"></span>
         </p>
-        <h2 class="mt-5 font-serif text-[clamp(2.1rem,4.4vw,3.3rem)] leading-[1.08] text-ink">
-          Crafted with<br /><span class="italic text-gold-deep">Passion &amp; Precision</span>
+        <h2 class="mt-5 font-serif text-[clamp(2.1rem,4.6vw,3.4rem)] leading-[1.08] text-ink">
+          Behind the <span class="italic text-gold-deep">Craft</span>
         </h2>
-        <p class="mt-6 max-w-md text-[13px] font-light leading-[1.95] text-muted">
-          Every item from Bloom &amp; Bite is hand-crafted in small batches using premium ingredients&mdash;zero
-          artificial shortcuts. We custom-package every order with meticulous detail so your desserts arrive fresh,
-          intact, and ready to impress.
+        <p class="mx-auto mt-5 max-w-xl text-[13px] font-light leading-[1.95] text-muted">
+          Every item is hand-crafted in small batches using premium ingredients&mdash;zero artificial shortcuts.
+          Three moments from the studio, packed fresh for your weekend table.
         </p>
+      </div>
 
-        <ul class="mt-8 space-y-4 border-t border-gold/25 pt-6">
-          <li class="flex items-start gap-3">
-            <span class="mt-1.5 h-1 w-1 shrink-0 rotate-45 bg-gold"></span>
-            <span class="font-sans text-[10px] uppercase tracking-[0.21em] text-ink/80">Baked in small batches, to order</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1.5 h-1 w-1 shrink-0 rotate-45 bg-gold"></span>
-            <span class="font-sans text-[10px] uppercase tracking-[0.21em] text-ink/80">Premium ingredients, no artificial shortcuts</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1.5 h-1 w-1 shrink-0 rotate-45 bg-gold"></span>
-            <span class="font-sans text-[10px] uppercase tracking-[0.21em] text-ink/80">Gift-ready packaging, packed by hand</span>
-          </li>
-        </ul>
+      <div id="reelTrack" aria-label="Behind the craft story carousel"
+           class="no-scrollbar relative mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-4 md:mx-auto md:grid md:max-w-5xl md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0">
 
+        <figure class="reel-card reveal relative w-[78%] max-w-[290px] shrink-0 snap-center overflow-hidden rounded-[18px] border border-gold/30 bg-espresso shadow-[0_30px_60px_-45px_rgba(36,28,23,0.85)] md:w-auto md:max-w-none">
+          <div class="aspect-[9/16] overflow-hidden">
+            <img src="https://i.postimg.cc/Fs0cBkvz/IMG-9333.jpg" alt="Piping macarons by hand in the Bloom and Bite studio" loading="lazy" width="900" height="1600"
+                 class="reel-img h-full w-full object-cover object-center" />
+          </div>
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso via-espresso/25 to-transparent"></div>
+          <figcaption class="absolute inset-x-0 bottom-0 p-5">
+            <span class="flex items-center gap-2 font-sans text-[8px] uppercase tracking-[0.26em] text-gold-light">
+              <span class="h-px w-5 bg-gold/70"></span>
+              Frame 01 &middot; The Piping
+            </span>
+            <p class="mt-2.5 font-serif text-[18px] leading-[1.4] text-ivory md:text-[19px]">Handcrafted in small batches&nbsp;<span class="text-gold-light">&bull;</span>&nbsp;Pure ingredients, zero shortcuts</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reel-card reveal relative w-[78%] max-w-[290px] shrink-0 snap-center overflow-hidden rounded-[18px] border border-gold/30 bg-espresso shadow-[0_30px_60px_-45px_rgba(36,28,23,0.85)] md:w-auto md:max-w-none">
+          <div class="aspect-[9/16] overflow-hidden">
+            <img src="https://i.postimg.cc/0yxmR553/IMG-9335.jpg" alt="Placing fresh fruit and flowers on seasonal tarts" loading="lazy" width="900" height="1600"
+                 class="reel-img h-full w-full object-cover object-center" />
+          </div>
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso via-espresso/25 to-transparent"></div>
+          <figcaption class="absolute inset-x-0 bottom-0 p-5">
+            <span class="flex items-center gap-2 font-sans text-[8px] uppercase tracking-[0.26em] text-gold-light">
+              <span class="h-px w-5 bg-gold/70"></span>
+              Frame 02 &middot; The Finish
+            </span>
+            <p class="mt-2.5 font-serif text-[18px] leading-[1.4] text-ivory md:text-[19px]">Meticulous detail in every fruit &amp; flower garnish</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reel-card reveal relative w-[78%] max-w-[290px] shrink-0 snap-center overflow-hidden rounded-[18px] border border-gold/30 bg-espresso shadow-[0_30px_60px_-45px_rgba(36,28,23,0.85)] md:w-auto md:max-w-none">
+          <div class="aspect-[9/16] overflow-hidden">
+            <img src="https://i.postimg.cc/Hsb5h8m9/IMG-9334.jpg" alt="Assembling a custom Bloom and Bite dessert box" loading="lazy" width="900" height="1600"
+                 class="reel-img h-full w-full object-cover object-center" />
+          </div>
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso via-espresso/25 to-transparent"></div>
+          <figcaption class="absolute inset-x-0 bottom-0 p-5">
+            <span class="flex items-center gap-2 font-sans text-[8px] uppercase tracking-[0.26em] text-gold-light">
+              <span class="h-px w-5 bg-gold/70"></span>
+              Frame 03 &middot; The Box
+            </span>
+            <p class="mt-2.5 font-serif text-[18px] leading-[1.4] text-ivory md:text-[19px]">Packed fresh with food-grade precision for safe Klang Valley delivery</p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div id="reelDots" class="mt-6 flex items-center justify-center gap-2 md:hidden"></div>
+
+      <div class="mt-8 text-center md:mt-10">
         <a href="https://wa.me/601131846437?text=Hi!%20I%27d%20like%20to%20check%20availability%20for%20the%20upcoming%20Klang%20Valley%20delivery%20batch." target="_blank" rel="noopener"
-           class="link-underline mt-8 inline-flex items-center gap-2 font-sans text-[9px] uppercase tracking-[0.26em] text-gold-deep">
+           class="link-underline inline-flex items-center gap-2 font-sans text-[9px] uppercase tracking-[0.26em] text-gold-deep">
           Speak to the baker
           <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -400,25 +429,80 @@
         </div>
         <div class="md:col-span-5 md:pb-2">
           <p class="max-w-sm text-[13px] font-light leading-[1.9] text-muted">
-            Four signatures, chosen for the weekend table &mdash; plus a ready-curated bundle. Further pieces from the
-            full collection are available on request.
+            Begin with the full hosting spread, then build your box from four signature pieces &mdash; each finished by
+            hand and packed for the weekend.
           </p>
         </div>
       </div>
 
-      <div class="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-14 pt-14 sm:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
+      <!-- ═══════════ FEATURED HOSTING SPREAD ═══════════ -->
+      <div class="mx-auto mt-14 max-w-6xl md:mt-16">
+        <div class="relative overflow-hidden rounded-[22px] border border-gold/50 bg-paper/70 shadow-[0_45px_90px_-75px_rgba(36,28,23,0.8)]">
+          <div class="grid md:grid-cols-12">
+            <figure class="relative md:col-span-5">
+              <div class="aspect-[4/5] overflow-hidden md:aspect-auto md:h-full">
+                <img src="https://i.postimg.cc/Sxq8FQNh/IMG-9330.jpg"
+                     alt="Ultimate Weekend Hosting and Gifting Spread — full luxury dessert table layout"
+                     loading="lazy" width="800" height="1000"
+                     class="h-full w-full object-cover" />
+              </div>
+              <span class="absolute left-4 top-4 rounded-full border border-gold/40 bg-espresso/80 px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.22em] text-gold-light backdrop-blur-sm">
+                Serves 8&ndash;12
+              </span>
+            </figure>
+            <div class="flex flex-col justify-center p-7 md:col-span-7 md:p-10">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full border border-gold/60 bg-gold/10 px-3 py-1.5 font-sans text-[8px] uppercase leading-[1.6] tracking-[0.18em] text-gold-deep">
+                Includes FREE Klang Valley Delivery Threshold
+              </span>
+              <h3 class="mt-6 font-serif text-[clamp(1.7rem,3.2vw,2.35rem)] leading-[1.15] text-ink">
+                <span aria-hidden="true">✨</span> Ultimate Weekend Hosting &amp; Gifting Spread
+              </h3>
+              <p class="mt-4 max-w-lg text-[12.5px] font-light leading-[1.9] text-muted">
+                A showstopping luxury table layout featuring our signature mini tarts, artisanal macarons, layered
+                pastries, and delicacy cups. Designed to serve 8&ndash;12 guests for high-end celebrations, corporate
+                gifts, or weekend family feasts across KL &amp; PJ.
+              </p>
+              <div class="mt-7 flex flex-wrap items-baseline gap-3">
+                <span class="font-serif text-[34px] leading-none text-ink">RM 300++</span>
+                <span class="font-sans text-[9px] uppercase tracking-[0.24em] text-muted">per spread &middot; delivery included</span>
+              </div>
+              <div class="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">
+                <button type="button"
+                        class="add-btn inline-flex items-center justify-center gap-2 rounded-full border border-gold px-6 py-3.5 font-sans text-[9px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-gold hover:text-ivory"
+                        data-item="Ultimate Weekend Hosting &amp; Gifting Spread (RM 300++)">
+                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                  Add spread to enquiry
+                </button>
+                <a href="https://wa.me/601131846437?text=Hi!%20I%27d%20like%20to%20reserve%20the%20Ultimate%20Weekend%20Hosting%20%26%20Gifting%20Spread%20for%20the%20upcoming%20Klang%20Valley%20delivery%20batch." target="_blank" rel="noopener"
+                   class="link-underline inline-flex w-fit items-center gap-2 font-sans text-[9px] uppercase tracking-[0.24em] text-gold-deep">
+                  Reserve on WhatsApp
+                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 flex items-center justify-center gap-4 md:mt-20">
+        <span class="h-px w-10 bg-gold/60"></span>
+        <p class="font-sans text-[9px] uppercase tracking-[0.3em] text-muted">The Signature Four</p>
+        <span class="h-px w-10 bg-gold/60"></span>
+      </div>
+
+      <div class="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
 
         <!-- 01 -->
         <article class="card group flex flex-col reveal">
           <figure class="card-frame relative overflow-hidden border border-gold/25 bg-paper/60 p-2">
             <div class="relative aspect-[4/5] overflow-hidden bg-cream">
-              <img src="https://i.postimg.cc/pTRzKQps/56046CDE-098D-4D97-928D-575A23575D65.jpg" alt="Tartelettes aux Fruits de Saison — seasonal fruit tarts" loading="lazy" width="900" height="1125"
+              <img src="https://i.postimg.cc/pTRzKQps/56046CDE-098D-4D97-928D-575A23575D65.jpg" alt="Signature Fresh Fruit Tart — seasonal fresh fruit tarts" loading="lazy" width="900" height="1125"
                    class="card-img h-full w-full object-cover" />
             </div>
           </figure>
           <div class="mt-6 flex flex-1 flex-col">
             <div class="flex items-start justify-between gap-4">
-              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Tartelettes aux Fruits de Saison</h3>
+              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Signature Fresh Fruit Tart</h3>
               <span class="mt-1 font-sans text-[9px] tracking-[0.3em] text-gold-deep">01</span>
             </div>
             <p class="mt-3 text-[12.5px] font-light leading-[1.85] text-muted">
@@ -437,7 +521,7 @@
                   <span class="font-serif text-lg text-ink">RM 300</span>
                 </div>
               </div>
-              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Tartelettes aux Fruits de Saison">
+              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Signature Fresh Fruit Tart">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
                 Add to enquiry
               </button>
@@ -449,13 +533,13 @@
         <article class="card group flex flex-col reveal">
           <figure class="card-frame relative overflow-hidden border border-gold/25 bg-paper/60 p-2">
             <div class="relative aspect-[4/5] overflow-hidden bg-cream">
-              <img src="https://i.postimg.cc/7hQzvpXB/IMG-9123-2.jpg" alt="Tartelette Chocolat & Pistache — chocolate pistachio tart" loading="lazy" width="900" height="1125"
+              <img src="https://i.postimg.cc/7hQzvpXB/IMG-9123-2.jpg" alt="Dark Chocolate-Pistachio Tart — chocolate pistachio tart" loading="lazy" width="900" height="1125"
                    class="card-img h-full w-full object-cover" />
             </div>
           </figure>
           <div class="mt-6 flex flex-1 flex-col">
             <div class="flex items-start justify-between gap-4">
-              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Tartelette Chocolat &amp; Pistache</h3>
+              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Dark Chocolate-Pistachio Tart</h3>
               <span class="mt-1 font-sans text-[9px] tracking-[0.3em] text-gold-deep">02</span>
             </div>
             <p class="mt-3 text-[12.5px] font-light leading-[1.85] text-muted">
@@ -474,7 +558,7 @@
                   <span class="font-serif text-lg text-ink">RM 330</span>
                 </div>
               </div>
-              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Tartelette Chocolat &amp; Pistache">
+              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Dark Chocolate-Pistachio Tart">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
                 Add to enquiry
               </button>
@@ -486,51 +570,14 @@
         <article class="card group flex flex-col reveal">
           <figure class="card-frame relative overflow-hidden border border-gold/25 bg-paper/60 p-2">
             <div class="relative aspect-[4/5] overflow-hidden bg-cream">
-              <img src="https://i.postimg.cc/VkMWPkt3/Gemini-Generated-Image-5gvbp15gvbp15gvb.jpg" alt="Choux au Craquelin" loading="lazy" width="900" height="1125"
+              <img src="https://i.postimg.cc/PqvsjZyd/Gemini-Generated-Image-u9qykbu9qykbu9qy.jpg" alt="Artisanal Macaron Collection — French macarons" loading="lazy" width="900" height="1125"
                    class="card-img h-full w-full object-cover" />
             </div>
           </figure>
           <div class="mt-6 flex flex-1 flex-col">
             <div class="flex items-start justify-between gap-4">
-              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Choux au Craquelin <span class="whitespace-nowrap font-sans text-[9px] uppercase tracking-[0.22em] text-gold-deep">(Size S)</span></h3>
+              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Artisanal Macaron Collection</h3>
               <span class="mt-1 font-sans text-[9px] tracking-[0.3em] text-gold-deep">03</span>
-            </div>
-            <p class="mt-3 text-[12.5px] font-light leading-[1.85] text-muted">
-              A crisp craquelin shell over delicate choux, finished with a light pastry cream and a restrained hand.
-            </p>
-            <div class="mt-auto pt-6">
-              <div class="space-y-2 border-t border-gold/25 pt-4">
-                <div class="flex items-baseline gap-3">
-                  <span class="font-sans text-[9px] uppercase tracking-[0.24em] text-muted">25 pcs Box</span>
-                  <span class="leader flex-1"></span>
-                  <span class="font-serif text-lg text-ink">RM 120</span>
-                </div>
-                <div class="flex items-baseline gap-3">
-                  <span class="font-sans text-[9px] uppercase tracking-[0.24em] text-muted">36 pcs Box</span>
-                  <span class="leader flex-1"></span>
-                  <span class="font-serif text-lg text-ink">RM 165</span>
-                </div>
-              </div>
-              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Choux au Craquelin (Size S)">
-                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-                Add to enquiry
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="card group flex flex-col reveal">
-          <figure class="card-frame relative overflow-hidden border border-gold/25 bg-paper/60 p-2">
-            <div class="relative aspect-[4/5] overflow-hidden bg-cream">
-              <img src="https://i.postimg.cc/PqvsjZyd/Gemini-Generated-Image-u9qykbu9qykbu9qy.jpg" alt="French Macarons" loading="lazy" width="900" height="1125"
-                   class="card-img h-full w-full object-cover" />
-            </div>
-          </figure>
-          <div class="mt-6 flex flex-1 flex-col">
-            <div class="flex items-start justify-between gap-4">
-              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">French Macarons</h3>
-              <span class="mt-1 font-sans text-[9px] tracking-[0.3em] text-gold-deep">04</span>
             </div>
             <p class="mt-3 text-[12.5px] font-light leading-[1.85] text-muted">
               Almond shells with a delicate crumb, paired with slow-made ganache in a palette of soft, considered shades.
@@ -548,7 +595,7 @@
                   <span class="font-serif text-lg text-ink">RM 160</span>
                 </div>
               </div>
-              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="French Macarons">
+              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Artisanal Macaron Collection">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
                 Add to enquiry
               </button>
@@ -556,51 +603,43 @@
           </div>
         </article>
 
-      </div>
-
-      <!-- ═══════════ FEATURED BUNDLE ═══════════ -->
-      <div class="mx-auto mt-16 max-w-5xl md:mt-20">
-        <div class="relative overflow-hidden border border-gold/50 bg-paper/70 shadow-[0_40px_80px_-70px_rgba(36,28,23,0.7)]">
-          <div class="grid md:grid-cols-12">
-            <figure class="relative md:col-span-5">
-              <div class="aspect-[4/3] overflow-hidden md:aspect-auto md:h-full">
-                <img src="https://i.postimg.cc/nLFjSFGD/Gemini-Generated-Image-4qzgec4qzgec4qzg.png"
-                     alt="Curated assortment of Bloom and Bite patisserie for the Ultimate Weekend Bundle"
-                     loading="lazy" width="900" height="1125"
-                     class="h-full w-full object-cover" />
+        <!-- 04 -->
+        <article class="card group flex flex-col reveal">
+          <figure class="card-frame relative overflow-hidden border border-gold/25 bg-paper/60 p-2">
+            <div class="relative aspect-[4/5] overflow-hidden bg-cream">
+              <img src="https://i.postimg.cc/VkMWPkt3/Gemini-Generated-Image-5gvbp15gvbp15gvb.jpg" alt="Crisp Gourmet Choux — craquelin choux" loading="lazy" width="900" height="1125"
+                   class="card-img h-full w-full object-cover" />
+            </div>
+          </figure>
+          <div class="mt-6 flex flex-1 flex-col">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="card-title font-serif text-[26px] leading-[1.15] text-ink">Crisp Gourmet Choux</h3>
+              <span class="mt-1 font-sans text-[9px] tracking-[0.3em] text-gold-deep">04</span>
+            </div>
+            <p class="mt-3 text-[12.5px] font-light leading-[1.85] text-muted">
+              A crisp craquelin shell over delicate choux, finished with a light pastry cream and a restrained hand.
+            </p>
+            <div class="mt-auto pt-6">
+              <div class="space-y-2 border-t border-gold/25 pt-4">
+                <div class="flex items-baseline gap-3">
+                  <span class="font-sans text-[9px] uppercase tracking-[0.24em] text-muted">25 pcs Box</span>
+                  <span class="leader flex-1"></span>
+                  <span class="font-serif text-lg text-ink">RM 120</span>
+                </div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-sans text-[9px] uppercase tracking-[0.24em] text-muted">36 pcs Box</span>
+                  <span class="leader flex-1"></span>
+                  <span class="font-serif text-lg text-ink">RM 165</span>
+                </div>
               </div>
-            </figure>
-            <div class="flex flex-col justify-center p-7 md:col-span-7 md:p-10">
-              <span class="inline-flex w-fit items-center gap-2 border border-gold/60 bg-gold/10 px-3 py-1.5 font-sans text-[8px] uppercase tracking-[0.22em] text-gold-deep">
-                Includes FREE Klang Valley Delivery
-              </span>
-              <h3 class="mt-6 font-serif text-[clamp(1.7rem,3.2vw,2.35rem)] leading-[1.15] text-ink">
-                <span aria-hidden="true">✨</span> The Ultimate Weekend Gifting &amp; Hosting Bundle
-              </h3>
-              <p class="mt-4 max-w-lg text-[12.5px] font-light leading-[1.9] text-muted">
-                A curated selection of our finest signature artisanal treats&mdash;perfect for group gatherings,
-                corporate gifts, or family weekend feasts.
-              </p>
-              <div class="mt-7 flex flex-wrap items-baseline gap-3">
-                <span class="font-serif text-[34px] leading-none text-ink">RM 300</span>
-                <span class="font-sans text-[9px] uppercase tracking-[0.24em] text-muted">per bundle &middot; delivery included</span>
-              </div>
-              <div class="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">
-                <button type="button"
-                        class="add-btn inline-flex items-center justify-center gap-2 border border-gold px-6 py-3.5 font-sans text-[9px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-gold hover:text-ivory"
-                        data-item="The Ultimate Weekend Gifting &amp; Hosting Bundle (RM 300)">
-                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-                  Add bundle to enquiry
-                </button>
-                <a href="https://wa.me/601131846437?text=Hi!%20I%27d%20like%20to%20reserve%20the%20Ultimate%20Weekend%20Bundle%20for%20the%20upcoming%20Klang%20Valley%20delivery%20batch." target="_blank" rel="noopener"
-                   class="link-underline inline-flex w-fit items-center gap-2 font-sans text-[9px] uppercase tracking-[0.24em] text-gold-deep">
-                  Reserve on WhatsApp
-                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
-              </div>
+              <button type="button" class="add-btn mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.26em] text-gold-deep transition-colors hover:text-ink" data-item="Crisp Gourmet Choux">
+                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Add to enquiry
+              </button>
             </div>
           </div>
-        </div>
+        </article>
+
       </div>
 
       <p class="mt-16 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center font-sans text-[10px] uppercase tracking-[0.22em] text-muted/[0.85]">
@@ -831,7 +870,7 @@
                   Desired Item List <span class="text-gold-deep">*</span>
                 </label>
                 <textarea id="items" name="items" rows="5" required
-                          placeholder="e.g. French Macarons — 36 pcs, Mini Cheesecakes aux Fruits Frais — 25 pcs"
+                          placeholder="e.g. Signature Fresh Fruit Tart — 25 pcs, Artisanal Macaron Collection — 36 pcs"
                           class="field mt-2" aria-describedby="itemsError itemsHint"></textarea>
                 <div class="mt-2 flex items-start justify-between gap-4">
                   <p id="itemsError" class="hidden text-[11px] tracking-wide text-[#A24B3B]">Please list the pieces you have in mind.</p>
@@ -1096,6 +1135,86 @@
     var whatsappUrl = 'https://wa.me/601131846437?text=' + encodeURIComponent(message);
     window.open(whatsappUrl, '_blank', 'noopener');
   });
+
+  /* Behind the Craft reel carousel */
+  var reelTrack = document.getElementById('reelTrack');
+  if (reelTrack) {
+    var reelCards = [].slice.call(reelTrack.querySelectorAll('.reel-card'));
+    var reelDots = document.getElementById('reelDots');
+    var reelIndex = 0;
+    var reelTimer = null;
+    var reelPaused = false;
+    var reelMq = window.matchMedia('(max-width: 767px)');
+    var reelMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reelVisible = false;
+
+    function paintDots() {
+      if (!reelDots) return;
+      [].slice.call(reelDots.children).forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === reelIndex);
+      });
+    }
+    function gotoReel(i) {
+      reelIndex = (i + reelCards.length) % reelCards.length;
+      var card = reelCards[reelIndex];
+      var left = card.offsetLeft - (reelTrack.clientWidth - card.clientWidth) / 2;
+      reelTrack.scrollTo({ left: left, behavior: reelMotion ? 'auto' : 'smooth' });
+      paintDots();
+    }
+    if (reelDots) {
+      reelCards.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'reel-dot';
+        dot.setAttribute('aria-label', 'Go to story ' + (i + 1));
+        dot.addEventListener('click', function () { pauseReel(9000); gotoReel(i); });
+        reelDots.appendChild(dot);
+      });
+      paintDots();
+    }
+    function stopReel() { clearInterval(reelTimer); reelTimer = null; }
+    function startReel() {
+      if (reelTimer || reelPaused || reelMotion || !reelMq.matches || !reelVisible) return;
+      reelTimer = setInterval(function () { gotoReel(reelIndex + 1); }, 4500);
+    }
+    function pauseReel(ms) {
+      reelPaused = true;
+      stopReel();
+      setTimeout(function () { reelPaused = false; startReel(); }, ms || 8000);
+    }
+    reelTrack.addEventListener('pointerdown', function () { pauseReel(9000); }, { passive: true });
+    reelTrack.addEventListener('touchstart', function () { pauseReel(9000); }, { passive: true });
+    window.addEventListener('resize', function () { startReel(); if (!reelMq.matches) stopReel(); });
+    if (reelMq.addEventListener) reelMq.addEventListener('change', function () { if (reelMq.matches) startReel(); else stopReel(); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        reelVisible = entries[0].isIntersecting;
+        if (reelVisible) startReel(); else stopReel();
+      }, { threshold: 0.35 }).observe(reelTrack);
+    } else {
+      reelVisible = true;
+      startReel();
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopReel(); else startReel();
+    });
+
+    var reelScrollTimer;
+    reelTrack.addEventListener('scroll', function () {
+      clearTimeout(reelScrollTimer);
+      reelScrollTimer = setTimeout(function () {
+        var center = reelTrack.scrollLeft + reelTrack.clientWidth / 2;
+        var best = 0, bestDist = Infinity;
+        reelCards.forEach(function (card, i) {
+          var mid = card.offsetLeft + card.clientWidth / 2;
+          var dist = Math.abs(mid - center);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        });
+        reelIndex = best;
+        paintDots();
+      }, 110);
+    }, { passive: true });
+  }
 
   [nameField, contactField, dateInput, itemsField].forEach(function (field) {
     field.addEventListener('input', function () {
