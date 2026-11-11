@@ -808,11 +808,6 @@
           welcome, but entirely optional — we will confirm availability and delivery details personally.
         </p>
 
-        <div class="mt-10 border-l border-gold/60 pl-6">
-          <p class="font-serif text-[17px] italic leading-relaxed text-ink/[0.85]">
-            Kindly book your artisanal creations in advance to ensure availability.
-          </p>
-        </div>
 
         <div class="mt-12 hidden items-center gap-4 md:flex">
           <span class="h-px w-14 bg-gold/60"></span>
@@ -1110,14 +1105,15 @@
     }
 
     var lines = [
-      'Hello Bloom and Bite! I would like to make an enquiry.',
+      'Hello Bloom & Bite! ✨',
+      "I'd like to check availability for an artisanal pre-order.",
       '',
-      'Name: ' + name,
-      'Contact: ' + contact
+      '• Name: ' + name,
+      '• Contact: ' + contact
     ];
-    if (date) lines.push('Preferred date: ' + prettyDate(date));
-    if (items) lines.push('', 'Items of interest:', items);
-    lines.push('', 'Kindly book your artisanal creations in advance to ensure availability.');
+    if (date) lines.push('• Preferred date: ' + prettyDate(date));
+    if (items) lines.push('', '• Items of interest:', items);
+    lines.push('', 'Looking forward to hearing from you!');
     var message = lines.join('\n');
 
     var whatsappUrl = 'https://wa.me/601131846437?text=' + encodeURIComponent(message);
